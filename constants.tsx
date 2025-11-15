@@ -8,7 +8,7 @@ export const PERSONAL_INFO = {
     email: 'emrdrsn.nl@gmail.com',
     phone: '+90 543 295 59 19',
     location: 'Istanbul, Turkey',
-    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=60',
+    avatar: 'https://media.licdn.com/dms/image/v2/D4D03AQHlu0evgEIp-A/profile-displayphoto-scale_200_200/B4DZhYUPh9HwAY-/0/1753828359776?e=1763596800&v=beta&t=Q7gf4fZrUPst920vFbjsybkOaIWk2TSXGzFMvbPomK0',
     resumeUrl: '#',
 };
 
