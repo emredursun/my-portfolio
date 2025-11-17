@@ -4,10 +4,10 @@ import { Service, TimelineItem, Skill, Project, TechCategory } from './types.ts'
 
 export const PERSONAL_INFO = {
     name: 'Emre Dursun',
-    title: 'Software Engineer',
-    email: 'emrdrsn.nl@gmail.com',
-    phone: '+90 543 295 59 19',
-    location: 'Istanbul, Turkey',
+    title: 'ISTQB® Certified Automation Engineer',
+    email: 'info.emredursun@gmail.com',
+    phone: '+31 6 2878 8948',
+    location: 'Amsterdam, Netherlands',
     avatar: 'https://www.emredursun.nl/images/profile.png',
     resumeUrl: '#',
 };
@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
     },
 ];
 
-export const ABOUT_TEXT = "I am Emre, a passionate software engineer based in Istanbul, Turkey. My journey in the software world has been driven by a constant desire to learn and innovate. I have experience working with various technologies and have successfully completed projects ranging from e-commerce platforms to real-time communication applications. I believe in writing clean, efficient, and maintainable code. My goal is to leverage my skills to create impactful solutions that solve real-world problems. Let's build something amazing together.";
+export const ABOUT_TEXT = "ISTQB® Certified Full-Stack Automation Engineer with experience in UI, API, and database testing using Java, Selenium, Cucumber, Postman, and Rest Assured. Skilled in designing scalable automation frameworks and integrating them with CI/CD pipelines. Proven track record of contributing to high-quality releases in Agile teams across banking, healthcare, and e-commerce domains. Fluent in Dutch, English, and Turkish (native).";
 
 export const EDUCATION: TimelineItem[] = [
     {
