@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Service, TimelineItem, Skill, Project, TechCategory } from './types.ts';
 
@@ -162,34 +161,34 @@ export const TECH_STACK: TechCategory[] = [
     {
         title: "Languages & Core Tech",
         technologies: [
-            { name: "Java", icon: <img src="https://via.placeholder.com/64.png?text=Java" alt="Java logo" width="64" height="64" className="object-contain" /> },
-            { name: "TypeScript", icon: <img src="https://via.placeholder.com/64.png?text=TS" alt="TypeScript logo" width="64" height="64" className="object-contain" /> },
-            { name: "SQL", icon: <img src="https://via.placeholder.com/64.png?text=SQL" alt="SQL logo" width="64" height="64" className="object-contain" /> },
-            { name: "HTML", icon: <img src="https://via.placeholder.com/64.png?text=HTML" alt="HTML logo" width="64" height="64" className="object-contain" /> },
-            { name: "CSS", icon: <img src="https://via.placeholder.com/64.png?text=CSS" alt="CSS logo" width="64" height="64" className="object-contain" /> },
+            { name: "Java", icon: <img src="https://www.emredursun.nl/images/java.png" alt="Java logo" width="64" height="64" className="object-contain" /> },
+            { name: "TypeScript", icon: <img src="https://www.emredursun.nl/images/typescript.png" alt="TypeScript logo" width="64" height="64" className="object-contain" /> },
+            { name: "SQL", icon: <img src="https://www.emredursun.nl/images/sql.png" alt="SQL logo" width="64" height="64" className="object-contain" /> },
+            { name: "HTML", icon: <img src="https://www.emredursun.nl/images/html.png" alt="HTML logo" width="64" height="64" className="object-contain" /> },
+            { name: "CSS", icon: <img src="https://www.emredursun.nl/images/css.png" alt="CSS logo" width="64" height="64" className="object-contain" /> },
         ],
     },
     {
         title: "Test Automation & Frameworks",
         technologies: [
-            { name: "Playwright", icon: <img src="https://via.placeholder.com/64.png?text=Playwright" alt="Playwright logo" width="64" height="64" className="object-contain" /> },
-            { name: "Cypress", icon: <img src="https://via.placeholder.com/64.png?text=Cypress" alt="Cypress logo" width="64" height="64" className="object-contain" /> },
-            { name: "JUnit", icon: <img src="https://via.placeholder.com/64.png?text=JUnit" alt="JUnit logo" width="64" height="64" className="object-contain" /> },
-            { name: "TestNG", icon: <img src="https://via.placeholder.com/64.png?text=TestNG" alt="TestNG logo" width="64" height="64" className="object-contain" /> },
-            { name: "Selenium", icon: <img src="https://via.placeholder.com/64.png?text=Selenium" alt="Selenium logo" width="64" height="64" className="object-contain" /> },
-            { name: "REST Assured", icon: <img src="https://via.placeholder.com/64.png?text=REST" alt="REST Assured logo" width="64" height="64" className="object-contain" /> },
-            { name: "Cucumber", icon: <img src="https://via.placeholder.com/64.png?text=Cucumber" alt="Cucumber logo" width="64" height="64" className="object-contain" /> },
-            { name: "Postman", icon: <img src="https://via.placeholder.com/64.png?text=Postman" alt="Postman logo" width="64" height="64" className="object-contain" /> },
+            { name: "Playwright", icon: <img src="https://www.emredursun.nl/images/playwright.png" alt="Playwright logo" width="64" height="64" className="object-contain" /> },
+            { name: "Cypress", icon: <img src="https://www.emredursun.nl/images/cypress.png" alt="Cypress logo" width="64" height="64" className="object-contain" /> },
+            { name: "JUnit", icon: <img src="https://www.emredursun.nl/images/junit.png" alt="JUnit logo" width="64" height="64" className="object-contain" /> },
+            { name: "TestNG", icon: <img src="https://www.emredursun.nl/images/testng.png" alt="TestNG logo" width="64" height="64" className="object-contain" /> },
+            { name: "Selenium", icon: <img src="https://www.emredursun.nl/images/selenium.png" alt="Selenium logo" width="64" height="64" className="object-contain" /> },
+            { name: "REST Assured", icon: <img src="https://www.emredursun.nl/images/restassured.png" alt="REST Assured logo" width="64" height="64" className="object-contain" /> },
+            { name: "Cucumber", icon: <img src="https://www.emredursun.nl/images/cucumber.png" alt="Cucumber logo" width="64" height="64" className="object-contain" /> },
+            { name: "Postman", icon: <img src="https://www.emredursun.nl/images/postman.png" alt="Postman logo" width="64" height="64" className="object-contain" /> },
         ],
     },
     {
         title: "CI/CD & DevOps Tools",
         technologies: [
-            { name: "Azure DevOps", icon: <img src="https://via.placeholder.com/64.png?text=Azure" alt="Azure DevOps logo" width="64" height="64" className="object-contain" /> },
-            { name: "Jenkins", icon: <img src="https://via.placeholder.com/64.png?text=Jenkins" alt="Jenkins logo" width="64" height="64" className="object-contain" /> },
-            { name: "Docker", icon: <img src="https://via.placeholder.com/64.png?text=Docker" alt="Docker logo" width="64" height="64" className="object-contain" /> },
-            { name: "Git", icon: <img src="https://via.placeholder.com/64.png?text=Git" alt="Git logo" width="64" height="64" className="object-contain" /> },
-            { name: "Maven", icon: <img src="https://via.placeholder.com/64.png?text=Maven" alt="Maven logo" width="64" height="64" className="object-contain" /> },
+            { name: "Azure DevOps", icon: <img src="https://www.emredursun.nl/images/azuredevops.png" alt="Azure DevOps logo" width="64" height="64" className="object-contain" /> },
+            { name: "Jenkins", icon: <img src="https://www.emredursun.nl/images/jenkins.png" alt="Jenkins logo" width="64" height="64" className="object-contain" /> },
+            { name: "Docker", icon: <img src="https://www.emredursun.nl/images/docker.png" alt="Docker logo" width="64" height="64" className="object-contain" /> },
+            { name: "Git", icon: <img src="https://www.emredursun.nl/images/git.png" alt="Git logo" width="64" height="64" className="object-contain" /> },
+            { name: "Maven", icon: <img src="https://www.emredursun.nl/images/maven.png" alt="Maven logo" width="64" height="64" className="object-contain" /> },
         ],
     },
 ];
