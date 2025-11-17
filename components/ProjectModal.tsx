@@ -1,5 +1,6 @@
+
 import React, { useEffect } from 'react';
-import { Project } from '../types';
+import { Project } from '../types.ts';
 
 interface ProjectModalProps {
   project: Project;

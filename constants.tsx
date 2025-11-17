@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Service, TimelineItem, Skill, Project, TechCategory } from './types';
+import { Service, TimelineItem, Skill, Project, TechCategory } from './types.ts';
 
 export const PERSONAL_INFO = {
     name: 'Emre Dursun',

@@ -1,11 +1,12 @@
+
 import React, { Suspense, lazy } from 'react';
-import { Page } from '../types';
+import { Page } from '../types.ts';
 
 // Lazy load page components for code-splitting
-const About = lazy(() => import('./About'));
-const Resume = lazy(() => import('./Resume'));
-const Projects = lazy(() => import('./Projects'));
-const Contact = lazy(() => import('./Contact'));
+const About = lazy(() => import('./About.tsx'));
+const Resume = lazy(() => import('./Resume.tsx'));
+const Projects = lazy(() => import('./Projects.tsx'));
+const Contact = lazy(() => import('./Contact.tsx'));
 
 interface MainContentProps {
   activePage: Page;

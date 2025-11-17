@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { PERSONAL_INFO, SOCIAL_LINKS } from '../constants';
-import ThemeSwitcher from './ThemeSwitcher';
-import { Page } from '../types';
+import { PERSONAL_INFO, SOCIAL_LINKS } from '../constants.tsx';
+import ThemeSwitcher from './ThemeSwitcher.tsx';
+import { Page } from '../types.ts';
 
 interface SidebarProps {
   theme: string;

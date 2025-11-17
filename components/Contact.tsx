@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { SOCIAL_LINKS } from '../constants';
+import { SOCIAL_LINKS } from '../constants.tsx';
 
 const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
     <div className="mb-12">

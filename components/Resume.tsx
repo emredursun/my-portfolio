@@ -1,6 +1,7 @@
+
 import React from 'react';
-import { TimelineItem, Skill } from '../types';
-import { EDUCATION, EXPERIENCE, SKILLS, TECH_STACK } from '../constants';
+import { TimelineItem, Skill } from '../types.ts';
+import { EDUCATION, EXPERIENCE, SKILLS, TECH_STACK } from '../constants.tsx';
 
 const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
     <div className="mb-12">

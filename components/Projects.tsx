@@ -1,7 +1,8 @@
+
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { Project } from '../types';
-import { PROJECTS } from '../constants';
-import ProjectModal from './ProjectModal';
+import { Project } from '../types.ts';
+import { PROJECTS } from '../constants.tsx';
+import ProjectModal from './ProjectModal.tsx';
 
 const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
     <div className="mb-12">

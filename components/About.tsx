@@ -1,6 +1,7 @@
+
 import React from 'react';
-import { Service } from '../types';
-import { ABOUT_TEXT, SERVICES } from '../constants';
+import { Service } from '../types.ts';
+import { ABOUT_TEXT, SERVICES } from '../constants.tsx';
 
 const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
     <div className="mb-12">

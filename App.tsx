@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import Sidebar from './components/Sidebar';
-import MainContent from './components/MainContent';
-import Navbar from './components/Navbar';
-import ScrollToTopButton from './components/ScrollToTopButton';
-import { Page } from './types';
+import Sidebar from './components/Sidebar.tsx';
+import MainContent from './components/MainContent.tsx';
+import Navbar from './components/Navbar.tsx';
+import ScrollToTopButton from './components/ScrollToTopButton.tsx';
+import { Page } from './types.ts';
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<Page>('About');
