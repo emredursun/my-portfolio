@@ -56,7 +56,7 @@ Ensure you have **Node.js** (LTS recommended) installed.
     ```bash
     npm run dev
     ```
-    The application will open in your browser (usually at `http://localhost:5173`).
+    The application will open in your browser (usually at `http://localhost:3000`).
 
 ---
 
