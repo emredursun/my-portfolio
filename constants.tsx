@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Service, TimelineItem, Skill, Project, TechCategory } from './types.ts';
 
@@ -7,7 +8,7 @@ export const PERSONAL_INFO = {
     email: 'emrdrsn.nl@gmail.com',
     phone: '+90 543 295 59 19',
     location: 'Istanbul, Turkey',
-    avatar: 'https://media.licdn.com/dms/image/v2/D4D03AQHlu0evgEIp-A/profile-displayphoto-scale_200_200/B4DZhYUPh9HwAY-/0/1753828359776?e=1763596800&v=beta&t=Q7gf4fZrUPst920vFbjsybkOaIWk2TSXGzFMvbPomK0',
+    avatar: 'https://www.emredursun.nl/images/profile.png',
     resumeUrl: '#',
 };
 
@@ -102,7 +103,7 @@ export const PROJECTS: Project[] = [
     {
         title: 'Interactive Resume',
         category: 'Web Development',
-        image: 'https://media.licdn.com/dms/image/v2/D4D03AQHlu0evgEIp-A/profile-displayphoto-scale_200_200/B4DZhYUPh9HwAY-/0/1753828359776?e=1763596800&v=beta&t=Q7gf4fZrUPst920vFbjsybkOaIWk2TSXGzFMvbPomK0',
+        image: 'https://www.emredursun.nl/images/profile.png',
         url: 'https://github.com/emredursun/emredursun-portfolio',
         description: "The very site you're currently exploring. A dynamic and responsive digital resume designed to provide an engaging overview of my skills and experience, built with a modern tech stack for a seamless user experience.",
         technologies: ["React", "TypeScript", "Tailwind CSS"],
