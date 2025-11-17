@@ -131,7 +131,7 @@ const Contact: React.FC = () => {
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Find Me Here</h3>
                      <div className="h-[300px] rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12041.838587120156!2d28.9732003!3d41.00532195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caba1f09824e5f%3A0xe0433e75e076633!2sThe%20Blue%20Mosque!5e0!3m2!1sen!2sus"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38740.16919139266!2d5.13280806443481!3d52.69614777894901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c61c3b531a3977%3A0x868b248a39151740!2sHoogkarspel!5e0!3m2!1sen!2snl!4v1721323330345!5m2!1sen!2snl"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
