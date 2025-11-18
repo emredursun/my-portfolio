@@ -74,13 +74,13 @@ export const EDUCATION: TimelineItem[] = [
 
 export const EXPERIENCE: TimelineItem[] = [
     {
-        date: 'June 2023 - September 2025',
-        title: 'Test Automation Engineer (PSS/True International Payments/Ch Dovetail)',
-        company: 'ING Bank - Amsterdam/Utrecht, Netherlands',
-        description: "Architected and maintained scalable automation test frameworks (Java, Selenium, REST Assured, Cucumber). Led UI, API, and DB testing for critical payment flows (PSS/TIP), reducing regression test time by 90% by integrating execution via Azure Pipelines. Consistently reported defects and collaborated with cross-functional teams to ensure high product quality and reliable releases.",
+        date: 'Jun 2023 - Sep 2025',
+        title: 'Automation Engineer (PSS/True International Payments/Ch Dovetail)',
+        company: 'ING Bank - Amsterdam, North Holland, Netherlands · Hybrid',
+        description: "As an Automation Test Engineer at ING's TIP Test Center (TTC), I designed and maintained automated end-to-end tests for real-time payment processing within the Dovetail system, a Fiserv payment platform, ensuring transaction accuracy across international branches. My responsibilities included designing test validations for various payment flows, managing and optimizing test data to accelerate deployment, and collaborating closely with development teams and stakeholders to ensure seamless integration with the automation framework.",
     },
     {
-        date: 'June 2022 - June 2023',
+        date: 'Jun 2022 - Jun 2023',
         title: 'QA Automation Engineer (Part-Time)',
         company: 'TechPro Education - Remote',
         description: 'Developed and managed automation frameworks for the Medunna Health Project. Integrated test suites with Jenkins for CI/CD implementation and executed comprehensive functional and regression tests.',
