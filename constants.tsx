@@ -140,6 +140,7 @@ export const LANGUAGES: Language[] = [
     { name: 'Turkish', level: 'Native', code: 'TR', percentage: 100, greeting: 'Merhaba' },
     { name: 'English', level: 'Professional (C1)', code: 'EN', percentage: 90, greeting: 'Hello' },
     { name: 'Dutch', level: 'Intermediate (B2)', code: 'NL', percentage: 70, greeting: 'Hallo' },
+    { name: 'Ukrainian', level: 'Beginner (A1)', code: 'UA', percentage: 20, greeting: 'Привіт' },
 ];
 
 export const TECH_STACK: TechCategory[] = [
