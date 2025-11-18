@@ -41,14 +41,14 @@ const LanguageCard: React.FC<{ language: Language }> = React.memo(({ language })
     const bars = Array.from({ length: barCount }, (_, i) => i < filledBars);
 
     return (
-        <div className="group relative overflow-hidden bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-yellow-400/10 hover:border-yellow-400/50 hover:-translate-y-1">
+        <div className="group relative overflow-hidden bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-yellow-400/10 hover:border-yellow-400/50 hover:-translate-y-1 min-h-[200px]">
             {/* Watermark Background */}
             <span className="absolute -right-4 -bottom-8 text-9xl font-black text-gray-100 dark:text-[#252525] opacity-50 pointer-events-none select-none transition-transform duration-500 group-hover:scale-110 group-hover:opacity-60">
                 {language.code}
             </span>
 
-            <div className="relative z-10 flex flex-col h-full justify-between gap-4">
-                <div className="flex justify-between items-start">
+            <div className="relative z-10 flex flex-col h-full justify-between">
+                <div className="flex justify-between items-start mb-4">
                     <div>
                         <h4 className="text-xl font-bold text-gray-900 dark:text-white">{language.name}</h4>
                         <div className="mt-1 inline-block bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs font-semibold text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 group-hover:border-yellow-400/30 group-hover:text-yellow-500 transition-colors">
@@ -77,18 +77,22 @@ const LanguageCard: React.FC<{ language: Language }> = React.memo(({ language })
                 </div>
 
                 {/* Surprise Interaction: Reveal Greeting on Hover */}
-                <div className="h-6 overflow-hidden">
-                    <p className="text-sm font-medium text-gray-400 dark:text-gray-500 translate-y-0 group-hover:-translate-y-full transition-transform duration-300">
-                        Proficiency: {language.percentage}%
-                    </p>
-                    <p className="text-lg font-bold text-gray-900 dark:text-white translate-y-0 group-hover:-translate-y-full transition-transform duration-300 flex items-center gap-2">
-                        <i className="far fa-comment-dots text-yellow-400"></i>
-                        "{language.greeting}"
-                    </p>
+                <div className="relative h-12 w-full overflow-hidden">
+                    <div className="absolute inset-0 flex items-center transition-all duration-500 ease-out transform group-hover:-translate-y-full group-hover:opacity-0">
+                        <p className="text-sm font-medium text-gray-400 dark:text-gray-500">
+                            Proficiency: {language.percentage}%
+                        </p>
+                    </div>
+                    <div className="absolute inset-0 flex items-center transition-all duration-500 ease-out transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                        <p className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                            <i className="far fa-comment-dots text-yellow-400"></i>
+                            "{language.greeting}"
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            {/* Add specific animation styles within the component for isolation */}
+            {/*ZS Add specific animation styles within the component for isolation */}
             <style>{`
                 @keyframes wave {
                     0%, 100% { height: 30%; opacity: 0.7; }
