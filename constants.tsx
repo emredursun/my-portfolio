@@ -47,37 +47,49 @@ export const ABOUT_TEXT = "ISTQB® Certified Full-Stack Automation Engineer with
 
 export const EDUCATION: TimelineItem[] = [
     {
-        date: '2017 — 2021',
-        title: "Bachelor's Degree, Computer Engineering",
-        company: 'Cankaya University',
-        description: 'Graduated with a strong foundation in computer science and software engineering principles.',
+        date: 'June 2022 - June 2023',
+        title: 'Bachelor of Engineering - Full-Stack Automation Engineering',
+        company: 'TechPro Education - Online/Remote',
+        description: 'Key Skills Developed: Test Automation (Selenium WebDriver, Cypress, Postman API, REST APIs, RESTful WebServices), CI/CD (Jenkins), Frameworks (Hybrid Framework, Cucumber/BDD), Languages/Tools (Java, Gherkin, SQL, Maven, TestNG, JUnit), Methodologies (Agile, Scrum, SDLC, QA Engineering, Test Planning), and more.',
+    },
+    {
+        date: 'September 2019 - April 2020',
+        title: 'Software Developer',
+        company: 'ROC van Twente - Enschede, Netherlands',
+        description: 'Key Skills Developed: Core Programming (C#, JavaScript), Database Management (SQL, T-SQL, MongoDB), Version Control (Git, GitHub), Web Fundamentals (HTML, CSS), and Object-Oriented Programming (OOP).',
+    },
+    {
+        date: 'October 2017 - March 2018',
+        title: 'Full-Stack Web Development',
+        company: 'HackYourFuture - Amsterdam, Netherlands',
+        description: 'Key Skills Developed: Web Technologies (HTML, CSS, JavaScript), API Testing, Version Control (Git, GitHub), C#, SQL, and Object-Oriented Programming (OOP).',
+    },
+    {
+        date: 'September 2007 - July 2013',
+        title: 'Bachelor of Applied Science - Mathematics',
+        company: 'Istanbul University - Istanbul, Turkey',
+        description: 'Relevant Coursework and Skills: Differential Equations, Complex Analysis, Probability & Statistics, Advanced Calculus, General Physics, and skills in Abstract Reasoning, Systematic Problem Solving, and Data Analysis.',
     },
 ];
 
 export const EXPERIENCE: TimelineItem[] = [
     {
-        date: 'Sep 2022 — Present',
-        title: 'Full Stack Developer',
-        company: 'Vodafone',
-        description: "As a Full Stack Developer at Vodafone, I've had the privilege of working on TOBi, the company's innovative chatbot. My role has involved a mix of front-end and back-end development, focusing on creating a seamless and intuitive user experience. I've been responsible for designing and implementing new features, optimizing performance, and ensuring the application's scalability and reliability.",
+        date: 'June 2023 - September 2025',
+        title: 'Test Automation Engineer (PSS/True International Payments/Ch Dovetail)',
+        company: 'ING Bank - Amsterdam/Utrecht, Netherlands',
+        description: "Architected and maintained scalable automation test frameworks (Java, Selenium, REST Assured, Cucumber). Led UI, API, and DB testing for critical payment flows (PSS/TIP), reducing regression test time by 90% by integrating execution via Azure Pipelines. Consistently reported defects and collaborated with cross-functional teams to ensure high product quality and reliable releases.",
     },
     {
-        date: 'Sep 2021 — Sep 2022',
-        title: 'Full Stack Developer',
-        company: 'Etiya',
-        description: 'During my time at Etiya, I worked on a variety of projects, primarily focusing on the BSS/OSS domain for telecommunication companies. I was involved in the entire software development lifecycle, from requirement analysis and design to implementation, testing, and deployment. I gained hands-on experience with microservices architecture, developing and maintaining RESTful APIs, and building responsive user interfaces.',
+        date: 'June 2022 - June 2023',
+        title: 'QA Automation Engineer (Part-Time)',
+        company: 'TechPro Education - Remote',
+        description: 'Developed and managed automation frameworks for the Medunna Health Project. Integrated test suites with Jenkins for CI/CD implementation and executed comprehensive functional and regression tests.',
     },
     {
-        date: 'Dec 2019 — Sep 2021',
-        title: 'Software Engineer',
-        company: 'OBSS',
-        description: 'At OBSS, I started my professional career. I was part of a team that developed and maintained a large-scale banking application. My responsibilities included implementing new features, fixing bugs, and writing unit and integration tests. I worked primarily with Java and Spring Boot for the back-end, and gained valuable experience in enterprise software development.',
-    },
-    {
-        date: 'Jul 2019 — Aug 2019',
-        title: 'Software Engineer Intern',
-        company: 'Havelsan',
-        description: 'My internship at Havelsan was my first exposure to a professional software development environment. I worked on a simulation project, where I was tasked with developing and testing various modules. This experience was instrumental in solidifying my understanding of software engineering principles and teamwork.',
+        date: 'May 2021 - Jan 2023',
+        title: 'Manual Tester & e-Commerce Specialist',
+        company: 'BSG Auto Parts & Nerex Motors - Amsterdam, Netherlands',
+        description: 'Conducted manual testing for in-house ERP systems. Improved product search performance and visibility across online sales channels. Boosted online sales through strategic sponsored ad campaigns.',
     },
 ];
 
