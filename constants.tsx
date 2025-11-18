@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Service, TimelineItem, Skill, Project, TechCategory } from './types.ts';
+import { Service, TimelineItem, Skill, Project, TechCategory, Language } from './types.ts';
 
 export const PERSONAL_INFO = {
     name: 'Emre Dursun',
@@ -13,35 +13,43 @@ export const PERSONAL_INFO = {
 };
 
 export const SOCIAL_LINKS = [
-    { name: 'github', icon: <i className="fab fa-github"></i>, url: 'https://github.com/dursunemre' },
-    { name: 'linkedin', icon: <i className="fab fa-linkedin-in"></i>, url: 'https://www.linkedin.com/in/dursunemre/' },
-    { name: 'medium', icon: <i className="fab fa-medium"></i>, url: 'https://medium.com/@dursunemre' },
-    { name: 'twitter', icon: <i className="fab fa-twitter"></i>, url: 'https://twitter.com/dursunemre' },
-    { name: 'instagram', icon: <i className="fab fa-instagram"></i>, url: 'https://instagram.com/dursunemre' },
+    { name: 'github', icon: <i className="fab fa-github"></i>, url: 'https://github.com/emredursun' },
+    { name: 'linkedin', icon: <i className="fab fa-linkedin-in"></i>, url: 'https://www.linkedin.com/in/emre-dursun-nl/' },
+    { name: 'whatsapp', icon: <i className="fab fa-whatsapp"></i>, url: 'https://wa.me/31628788948' },
+    { name: 'X', icon: <i className="fab fa-x-twitter"></i>, url: 'https://x.com/info_emredursun' },
+    { name: 'instagram', icon: <i className="fab fa-instagram"></i>, url: 'https://www.instagram.com/trueheartfeltjourney' },
 ];
 
 export const SERVICES: Service[] = [
     {
-        icon: <i className="fas fa-code text-3xl text-yellow-400"></i>,
-        title: 'Web Development',
-        description: 'High-quality development of sites at the professional level.',
+        icon: <i className="fas fa-robot"></i>,
+        title: 'Test Automation Architecture',
+        description: 'Building robust, scalable end-to-end automation frameworks to ensure software quality and reliability.',
+        tags: ['Java', 'Selenium', 'Playwright', 'Cypress', 'Cucumber']
     },
     {
-        icon: <i className="fas fa-mobile-alt text-3xl text-yellow-400"></i>,
-        title: 'Mobile App Development',
-        description: 'Professional development of applications for iOS and Android.',
+        icon: <i className="fas fa-sync-alt"></i>,
+        title: 'CI/CD & DevOps Integration',
+        description: 'Designing and maintaining continuous integration pipelines to accelerate deployment and reduce risk.',
+        tags: ['Jenkins', 'Azure DevOps', 'Docker', 'Git', 'Maven']
     },
     {
-        icon: <i className="fas fa-paint-brush text-3xl text-yellow-400"></i>,
-        title: 'UI/UX Design',
-        description: 'The most modern and high-quality design made at a professional level.',
+        icon: <i className="fas fa-server"></i>,
+        title: 'API & Backend Validation',
+        description: 'Implementing comprehensive API testing strategies and database validations for backend integrity.',
+        tags: ['Rest Assured', 'Postman', 'SQL', 'JUnit', 'TestNG']
     },
     {
-        icon: <i className="fas fa-chalkboard-teacher text-3xl text-yellow-400"></i>,
-        title: 'Mentoring',
-        description: 'I can mentor you in software development and guide you in your career path.',
+        icon: <i className="fas fa-laptop-code"></i>,
+        title: 'Full-Stack Web Development',
+        description: 'Developing responsive, high-performance web applications with modern frontend and backend technologies.',
+        tags: ['React', 'TypeScript', 'HTML/CSS', 'Node.js', 'Tailwind']
     },
 ];
+
+export const ABOUT_INTRO = "Driven by precision, powered by curiosity. I transform manual testing corridors into automated, repeatable systems so teams have clear feedback and confidence to ship.";
+
+export const ABOUT_STORY = "I’ve worked across banking and e-commerce domains building API & UI automation, resilient test pipelines, and observability to help teams scale testing without slowing delivery. I enjoy breaking complex flows into simple, testable parts and collaborating cross-functionally to reduce risk.";
 
 export const ABOUT_TEXT = "ISTQB® Certified Full-Stack Automation Engineer with experience in UI, API, and database testing using Java, Selenium, Cucumber, Postman, and Rest Assured. Skilled in designing scalable automation frameworks and integrating them with CI/CD pipelines. Proven track record of contributing to high-quality releases in Agile teams across banking, healthcare, and e-commerce domains. Fluent in Dutch, English, and Turkish (native).";
 
@@ -81,127 +89,118 @@ export const EXPERIENCE: TimelineItem[] = [
     },
     {
         date: 'Jun 2022 - Jun 2023',
-        title: 'QA Automation Engineer (Part-Time)',
-        company: 'TechPro Education - Remote',
-        description: 'Developed and managed automation frameworks for the Medunna Health Project. Integrated test suites with Jenkins for CI/CD implementation and executed comprehensive functional and regression tests.',
+        title: 'Full-Stack Automation Engineer (SDET)',
+        company: 'TechPro Education EU - Netherlands · Remote',
+        description: 'Developed and managed a comprehensive Automation Framework based on acceptance criteria using Selenium WebDriver, Java, JUnit, and Cucumber. Executed UI, backend, and database tests for a hospital portal, covering functionalities like patient management and appointment scheduling. Performed API testing with Postman and Rest Assured, managed dependencies via Maven, and integrated CI/CD pipelines with Jenkins in an Agile environment.',
     },
     {
         date: 'May 2021 - Jan 2023',
         title: 'Manual Tester & e-Commerce Specialist',
-        company: 'BSG Auto Parts & Nerex Motors - Amsterdam, Netherlands',
-        description: 'Conducted manual testing for in-house ERP systems. Improved product search performance and visibility across online sales channels. Boosted online sales through strategic sponsored ad campaigns.',
+        company: 'BSG Auto Parts & Nerex Motors - Amsterdam, Netherlands · On-site',
+        description: "Played a pivotal role at Nerex Motors enhancing e-commerce strategies and product quality. Conducted manual testing on ERP systems to maintain high functionality standards, improved product search visibility on Amazon and eBay, and implemented strategic ad campaigns driving online sales. Successfully managed the Online Channel (AutoDoc) sales process for BSG Auto Parts, fostering B2B growth by developing tailored sales strategies, cultivating strong relationships with key accounts, and negotiating competitive commercial terms.",
     },
+    {
+        date: 'Mar 2019 - Sep 2020',
+        title: 'Student Affairs Coordinator',
+        company: 'LiveCoding | Online Web Development Bootcamp - Netherlands · Remote',
+        description: 'Played a key role in enhancing the student experience at LiveCoding through comprehensive support and engagement initiatives. Delivered tailored counseling to online students, helping them overcome various challenges. Organized and executed virtual activities to strengthen community ties among students. Maintained accurate student records, ensuring compliance with program policies and tracking progress effectively.',
+    },
+    {
+        date: 'Jul 2017 - Sep 2020',
+        title: 'FerriStar - Evergreen Niches',
+        company: 'eBay - Netherlands · Self-employed',
+        description: "Successfully contributed to FerriStar's mission of providing curated best sellers and evergreen essentials. Developed strong relationships with suppliers to ensure a consistent supply of high-quality products. Focused on enhancing customer experience through thoughtful product selection in various categories. Gained expertise in e-commerce and product curation, reinforcing FerriStar's reputation in the market.",
+    },
+    {
+        date: 'Sep 2016 - Mar 2017',
+        title: 'Mathematics Instructor',
+        company: 'Mohammed Al Fatih Schools - El Jadida, Morocco · On-site',
+        description: 'Contributed significantly to mathematics instruction focusing on holistic student development. Employed interdisciplinary connections to enhance lesson relevance and student engagement. Collaborated with colleagues to support extracurricular activities and pastoral care initiatives.'
+    },
+    {
+        date: 'Mar 2012 - Sep 2014',
+        title: 'Volunteer Assistant',
+        company: 'Fiader - Istanbul, Turkey · Part-time',
+        description: "Played a key role in supporting Fiader's mission through effective volunteer coordination and administrative tasks. Managed volunteer records and scheduled shifts to optimize resource allocation. Assisted in organizing events and training sessions, ensuring all logistics were in place. Acted as a primary point of contact, enhancing communication and volunteer engagement.",
+    }
 ];
 
 export const SKILLS: Skill[] = [
-    { name: 'QA Automation Tools', level: 95 },
-    { name: 'UI/UX Design', level: 90 },
-    { name: 'Mobile Development', level: 85 },
-    { name: 'Frontend Development', level: 80 },
-    { name: 'DevOps & Tools', level: 80 },
-    { name: 'Backend Development', level: 75 },
-    { name: 'Databases & Caching', level: 75 },
+    { name: 'Test Automation', level: 95 },
+    { name: 'Java & Ecosystem', level: 90 },
+    { name: 'Selenium & Cucumber', level: 90 },
+    { name: 'Playwright & Cypress (TS)', level: 85 },
+    { name: 'API Testing (Rest Assured)', level: 85 },
+    { name: 'CI/CD (Jenkins & Azure)', level: 80 },
+    { name: 'Docker & Containerization', level: 75 },
+    { name: 'SQL & Databases', level: 75 },
 ];
 
-export const PROJECTS: Project[] = [
-    {
-        title: 'Pide',
-        category: 'Mobile App',
-        image: 'https://images.unsplash.com/photo-1580915411954-2823e176c827?w=500&auto=format&fit=crop&q=60',
-        url: '#',
-        description: "Pide is a mobile application that allows you to order food from your favorite restaurants. It has a simple and user-friendly interface that makes it easy to browse menus, customize your order, and pay securely. It also has a real-time order tracking feature.",
-        technologies: ["React Native", "TypeScript", "Redux", "Node.js", "Express.js", "MongoDB"],
-    },
-    {
-        title: 'Interactive Resume',
-        category: 'Web Development',
-        image: 'https://www.emredursun.nl/images/profile.png',
-        url: 'https://github.com/emredursun/emredursun-portfolio',
-        description: "The very site you're currently exploring. A dynamic and responsive digital resume designed to provide an engaging overview of my skills and experience, built with a modern tech stack for a seamless user experience.",
-        technologies: ["React", "TypeScript", "Tailwind CSS"],
-    },
-    {
-        title: 'Realtime Chat',
-        category: 'Web Development',
-        image: 'https://images.unsplash.com/photo-1553484771-11998c592b9c?w=500&auto=format&fit=crop&q=60',
-        url: 'https://github.com/dursunemre/realtime-chat',
-        description: "A real-time chat application that allows users to send and receive messages instantly. It has a simple and intuitive interface that makes it easy to use. It is built with React, Node.js, and Socket.IO. It also has a feature that allows users to see who is currently online.",
-        technologies: ["React", "Node.js", "Socket.IO", "Express.js", "MongoDB"],
-    },
-    {
-        title: 'Weather App',
-        category: 'Mobile App',
-        image: 'https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=500&auto=format&fit=crop&q=60',
-        url: 'https://github.com/dursunemre/weather-app',
-        description: "A weather application that provides real-time weather information for any city in the world. It has a simple and elegant design that makes it easy to use. It is built with React Native and Expo. It uses the OpenWeatherMap API to fetch weather data.",
-        technologies: ["React Native", "Expo", "OpenWeatherMap API"],
-    },
-    {
-        title: 'E-commerce',
-        category: 'Web Development',
-        image: 'https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?w=500&auto=format&fit=crop&q=60',
-        url: 'https://github.com/dursunemre/e-commerce',
-        description: "A full-featured e-commerce platform that allows users to browse products, add them to their cart, and checkout securely. It has a modern and responsive design that provides a great user experience on all devices. It is built with React, Node.js, and Stripe for payment processing.",
-        technologies: ["React", "Node.js", "Express.js", "MongoDB", "Stripe"],
-    },
-    {
-        title: 'Fitness App Concept',
-        category: 'UI/UX Design',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&auto=format&fit=crop&q=60',
-        url: '#',
-        description: "A UI/UX concept for a modern fitness tracking application. Focused on a clean, motivating, and user-friendly interface to help users achieve their fitness goals.",
-        technologies: ["Figma", "Adobe XD", "User Research"],
-    },
-    {
-        title: 'Contribute-OSS',
-        category: 'Open Source',
-        image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=500&auto=format&fit=crop&q=60',
-        url: 'https://github.com/dursunemre/contribute-oss',
-        description: "An open-source platform designed to help new contributors find projects and issues to work on. Aims to lower the barrier to entry for open-source participation.",
-        technologies: ["React", "TypeScript", "Node.js", "GraphQL", "Docker"],
-    },
-    {
-        title: 'CI/CD Pipeline Automation',
-        category: 'DevOps',
-        image: 'https://images.unsplash.com/photo-1593432336334-a69d2d7162d2?w=500&auto=format&fit=crop&q=60',
-        url: '#',
-        description: "Automated the build, test, and deployment process for a microservices-based application using Jenkins and Docker, significantly reducing deployment time and manual errors.",
-        technologies: ["Jenkins", "Docker", "Kubernetes", "AWS", "Terraform"],
-    },
+export const LANGUAGES: Language[] = [
+    { name: 'Turkish', level: 'Native', code: 'TR', percentage: 100, greeting: 'Merhaba' },
+    { name: 'English', level: 'Professional (C1)', code: 'EN', percentage: 90, greeting: 'Hello' },
+    { name: 'Dutch', level: 'Intermediate (B2)', code: 'NL', percentage: 70, greeting: 'Hallo' },
 ];
 
 export const TECH_STACK: TechCategory[] = [
     {
-        title: "Languages & Core Tech",
+        title: 'Languages & Core Tech',
         technologies: [
-            { name: "Java", icon: <img src="https://www.emredursun.nl/images/java.png" alt="Java logo" width="64" height="64" className="object-contain" /> },
-            { name: "TypeScript", icon: <img src="https://www.emredursun.nl/images/typescript.png" alt="TypeScript logo" width="64" height="64" className="object-contain" /> },
-            { name: "SQL", icon: <img src="https://www.emredursun.nl/images/sql.png" alt="SQL logo" width="64" height="64" className="object-contain" /> },
-            { name: "HTML", icon: <img src="https://www.emredursun.nl/images/html.png" alt="HTML logo" width="64" height="64" className="object-contain" /> },
-            { name: "CSS", icon: <img src="https://www.emredursun.nl/images/css.png" alt="CSS logo" width="64" height="64" className="object-contain" /> },
-        ],
+            { name: 'Java', icon: <i className="fab fa-java text-3xl text-red-500"></i> },
+            { name: 'TypeScript', icon: <i className="fab fa-js text-3xl text-blue-500"></i> },
+            { name: 'SQL', icon: <i className="fas fa-database text-3xl text-blue-400"></i> },
+            { name: 'HTML', icon: <i className="fab fa-html5 text-3xl text-orange-600"></i> },
+            { name: 'CSS', icon: <i className="fab fa-css3-alt text-3xl text-blue-600"></i> },
+        ]
     },
     {
-        title: "Test Automation & Frameworks",
+        title: 'Test Automation & Frameworks',
         technologies: [
-            { name: "Playwright", icon: <img src="https://www.emredursun.nl/images/playwright.png" alt="Playwright logo" width="64" height="64" className="object-contain" /> },
-            { name: "Cypress", icon: <img src="https://www.emredursun.nl/images/cypress.png" alt="Cypress logo" width="64" height="64" className="object-contain" /> },
-            { name: "JUnit", icon: <img src="https://www.emredursun.nl/images/junit.png" alt="JUnit logo" width="64" height="64" className="object-contain" /> },
-            { name: "TestNG", icon: <img src="https://www.emredursun.nl/images/testng.png" alt="TestNG logo" width="64" height="64" className="object-contain" /> },
-            { name: "Selenium", icon: <img src="https://www.emredursun.nl/images/selenium.png" alt="Selenium logo" width="64" height="64" className="object-contain" /> },
-            { name: "REST Assured", icon: <img src="https://www.emredursun.nl/images/restassured.png" alt="REST Assured logo" width="64" height="64" className="object-contain" /> },
-            { name: "Cucumber", icon: <img src="https://www.emredursun.nl/images/cucumber.png" alt="Cucumber logo" width="64" height="64" className="object-contain" /> },
-            { name: "Postman", icon: <img src="https://www.emredursun.nl/images/postman.png" alt="Postman logo" width="64" height="64" className="object-contain" /> },
-        ],
+            { name: 'Playwright', icon: <i className="fas fa-masks-theater text-3xl text-green-500"></i> },
+            { name: 'Cypress', icon: <i className="fas fa-eye text-3xl text-gray-500"></i> },
+            { name: 'JUnit', icon: <i className="fas fa-vial text-3xl text-red-500"></i> },
+            { name: 'TestNG', icon: <i className="fas fa-vials text-3xl text-blue-500"></i> },
+            { name: 'Selenium', icon: <i className="fas fa-check-circle text-3xl text-green-500"></i> },
+            { name: 'REST Assured', icon: <i className="fas fa-globe text-3xl text-green-600"></i> },
+            { name: 'Cucumber', icon: <i className="fas fa-leaf text-3xl text-green-500"></i> },
+            { name: 'Postman', icon: <i className="fas fa-rocket text-3xl text-orange-500"></i> },
+        ]
     },
     {
-        title: "CI/CD & DevOps Tools",
+        title: 'CI/CD & DevOps Tools',
         technologies: [
-            { name: "Azure DevOps", icon: <img src="https://www.emredursun.nl/images/azuredevops.png" alt="Azure DevOps logo" width="64" height="64" className="object-contain" /> },
-            { name: "Jenkins", icon: <img src="https://www.emredursun.nl/images/jenkins.png" alt="Jenkins logo" width="64" height="64" className="object-contain" /> },
-            { name: "Docker", icon: <img src="https://www.emredursun.nl/images/docker.png" alt="Docker logo" width="64" height="64" className="object-contain" /> },
-            { name: "Git", icon: <img src="https://www.emredursun.nl/images/git.png" alt="Git logo" width="64" height="64" className="object-contain" /> },
-            { name: "Maven", icon: <img src="https://www.emredursun.nl/images/maven.png" alt="Maven logo" width="64" height="64" className="object-contain" /> },
-        ],
+            { name: 'Azure DevOps', icon: <i className="fab fa-microsoft text-3xl text-blue-600"></i> },
+            { name: 'Jenkins', icon: <i className="fab fa-jenkins text-3xl text-gray-700 dark:text-white"></i> },
+            { name: 'Docker', icon: <i className="fab fa-docker text-3xl text-blue-500"></i> },
+            { name: 'Git', icon: <i className="fab fa-git-alt text-3xl text-orange-600"></i> },
+            { name: 'Maven', icon: <i className="fas fa-feather-alt text-3xl text-red-600"></i> },
+        ]
+    }
+];
+
+export const PROJECTS: Project[] = [
+    {
+        title: 'Banking Payment Automation',
+        category: 'Automation',
+        image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+        description: 'Designed and maintained automated end-to-end tests for real-time payment processing within the Dovetail system.',
+        technologies: ['Java', 'Selenium', 'Jenkins', 'SQL'],
+        url: '#'
     },
+    {
+        title: 'Hospital Portal Testing',
+        category: 'QA Testing',
+        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+        description: 'Executed UI, backend, and database tests for a hospital portal, covering patient management and appointments.',
+        technologies: ['Selenium', 'Cucumber', 'Rest Assured', 'Maven'],
+        url: '#'
+    },
+    {
+        title: 'E-commerce Sales Optimization',
+        category: 'E-commerce',
+        image: 'https://www.servcorp.co.uk/media/34561/e-commerce-img.jpeg?format=webp&quality=70&width=688',
+        description: 'Improved product search visibility on Amazon/eBay and managed Online Channel sales processes.',
+        technologies: ['E-commerce', 'SEO', 'Analytics', 'Management'],
+        url: '#'
+    }
 ];

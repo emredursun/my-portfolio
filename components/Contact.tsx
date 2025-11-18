@@ -6,7 +6,7 @@ const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
     <div className="mb-12">
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white relative inline-block">
             {title}
-            <span className="absolute bottom-[-10px] left-0 w-1/2 h-1 bg-yellow-400"></span>
+            <span className="absolute bottom-[-10px] left-0 w-full h-1 bg-yellow-400 rounded-full"></span>
         </h2>
     </div>
 ));

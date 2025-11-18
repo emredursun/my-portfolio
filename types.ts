@@ -7,6 +7,7 @@ export interface Service {
   icon: React.ReactNode;
   title: string;
   description: string;
+  tags?: string[];
 }
 
 export interface TimelineItem {
@@ -19,6 +20,14 @@ export interface TimelineItem {
 export interface Skill {
   name: string;
   level: number;
+}
+
+export interface Language {
+    name: string;
+    level: string;
+    code: string;
+    percentage: number;
+    greeting: string;
 }
 
 export interface Project {
