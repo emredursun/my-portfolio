@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PERSONAL_INFO, SOCIAL_LINKS } from '../constants.tsx';
 import ThemeSwitcher from './ThemeSwitcher.tsx';
 import { Page } from '../types.ts';
@@ -18,6 +18,46 @@ const pages: { label: Page; icon: React.ReactNode }[] = [
     { label: 'Projects', icon: <i className="far fa-folder-open"></i> },
     { label: 'Contact', icon: <i className="far fa-envelope"></i> },
 ];
+
+// Cipher Scramble Component
+const ScrambleText: React.FC<{ text: string; className?: string }> = ({ text, className }) => {
+    const [displayText, setDisplayText] = useState(text);
+    const intervalRef = useRef<number | null>(null);
+    const chars = "!@#$%^&*()_+-=[]{}|;':,.<>/?";
+
+    const handleMouseEnter = () => {
+        let iteration = 0;
+        
+        if (intervalRef.current) clearInterval(intervalRef.current);
+
+        intervalRef.current = window.setInterval(() => {
+            setDisplayText(prev => 
+                text.split("").map((letter, index) => {
+                    if (index < iteration) {
+                        return text[index];
+                    }
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join("")
+            );
+
+            if (iteration >= text.length) {
+                if (intervalRef.current) clearInterval(intervalRef.current);
+            }
+
+            iteration += 1 / 3; // Speed of resolve
+        }, 30);
+    };
+
+    return (
+        <h1 
+            onMouseEnter={handleMouseEnter}
+            className={className}
+            style={{ cursor: 'default' }}
+        >
+            {displayText}
+        </h1>
+    );
+};
 
 const NavButton: React.FC<{
   page: { label: Page; icon: React.ReactNode };
@@ -42,6 +82,15 @@ const NavButton: React.FC<{
 ));
 
 const Sidebar: React.FC<SidebarProps> = ({ theme, toggleTheme, activePage, onNavigate, isMobileView }) => {
+    const [greeting, setGreeting] = useState('Hello');
+
+    useEffect(() => {
+        const hour = new Date().getHours();
+        if (hour < 12) setGreeting('Good Morning');
+        else if (hour < 18) setGreeting('Good Afternoon');
+        else setGreeting('Good Evening');
+    }, []);
+
     return (
         <aside className={`relative bg-white dark:bg-[#2a2a2a] rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg flex flex-col ${isMobileView ? 'w-full items-center text-center' : 'w-[320px] items-start text-left'}`}>
             <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
@@ -68,7 +117,13 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, toggleTheme, activePage, onNav
             </div>
 
             <div className="mt-6 mb-6 w-full">
-                <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-2 group-hover:text-yellow-500 transition-colors duration-300">{PERSONAL_INFO.name}</h1>
+                <span className="block text-sm font-mono text-yellow-500 mb-1 animate-pulse">
+                     {greeting}, I'm
+                </span>
+                <ScrambleText 
+                    text={PERSONAL_INFO.name}
+                    className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-2 group-hover:text-yellow-500 transition-colors duration-300 font-mono"
+                />
                 <div className="inline-block bg-gray-100 dark:bg-gray-800 rounded-lg px-3 py-1.5 border border-gray-200 dark:border-gray-700">
                      <p className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">{PERSONAL_INFO.title}</p>
                 </div>

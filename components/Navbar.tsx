@@ -19,24 +19,33 @@ const NavButton: React.FC<{
   isActive: boolean;
   onNavigate: (page: Page) => void;
 }> = React.memo(({ page, isActive, onNavigate }) => (
-    <li className="w-full">
+    <li className="flex-1 flex justify-center">
         <button
             onClick={() => onNavigate(page.label)}
-            className={`flex flex-col items-center justify-center w-full p-2 rounded-lg transition-all duration-300 ${isActive ? 'text-yellow-400 scale-110' : 'text-gray-500 dark:text-gray-400 hover:text-yellow-400 hover:scale-110'}`}
+            className={`relative flex flex-col items-center justify-center w-full max-w-[70px] py-2 rounded-2xl transition-all duration-300 group ${isActive ? 'text-yellow-500 dark:text-yellow-400' : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'}`}
             aria-current={isActive ? 'page' : undefined}
         >
-            <span className="text-2xl">{page.icon}</span>
-            <span className="text-xs font-medium">{page.label}</span>
+            {/* Active Indicator Background */}
+            <span className={`absolute inset-0 bg-yellow-400/10 dark:bg-yellow-400/5 rounded-2xl transition-all duration-300 ${isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}></span>
+
+            <span className={`text-xl mb-1 z-10 transition-transform duration-300 ${isActive ? 'scale-110 -translate-y-0.5' : 'group-hover:scale-110'}`}>
+                {page.icon}
+            </span>
+            
+            {/* Label - Always visible */}
+            <span className="text-[10px] font-bold uppercase tracking-wider z-10 opacity-100 translate-y-0 transition-colors duration-300 whitespace-nowrap">
+                {page.label}
+            </span>
         </button>
     </li>
 ));
 
 const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
     return (
-        <nav className="fixed bottom-4 left-0 right-0 z-50 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="bg-white/80 dark:bg-[#2a2a2a]/80 backdrop-blur-sm shadow-[0_-2px_10px_rgba(0,0,0,0.1)] dark:shadow-[0_-2px_10px_rgba(0,0,0,0.3)] rounded-2xl">
-                <ul className="flex justify-around p-1">
+        <nav className="fixed bottom-6 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
+            {/* Floating Dock Container */}
+            <div className="pointer-events-auto w-full max-w-[400px] bg-white/90 dark:bg-[#1e1e1e]/90 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] border border-white/20 dark:border-gray-700/50 rounded-3xl p-1.5 animate-fade-in-up ring-1 ring-black/5 dark:ring-white/5">
+                <ul className="flex justify-between items-center px-1">
                     {pages.map((page) => (
                         <NavButton
                             key={page.label}
@@ -47,7 +56,6 @@ const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
                     ))}
                 </ul>
             </div>
-          </div>
         </nav>
     );
 };
