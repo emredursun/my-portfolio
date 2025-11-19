@@ -118,6 +118,12 @@ export const EXPERIENCE: TimelineItem[] = [
         description: 'Contributed significantly to mathematics instruction focusing on holistic student development. Employed interdisciplinary connections to enhance lesson relevance and student engagement. Collaborated with colleagues to support extracurricular activities and pastoral care initiatives.'
     },
     {
+        date: 'Sep 2014 - Sep 2016',
+        title: 'Mathematics Instructor',
+        company: 'LUMINA Educational Institutions - Bucharest, Romania · On-site',
+        description: "I had the privilege of teaching advanced mathematics at LUMINA Educational Institutions, where I focused on fostering student success in a diverse learning environment. Designed and graded internal assessments, providing detailed reports on student progress and predicted grades. Differentiated instruction to support students from various educational backgrounds, maintaining high international standards. Mentored students on their academic pathways, guiding them toward STEM-related university goals."
+    },
+    {
         date: 'Mar 2012 - Sep 2014',
         title: 'Volunteer Assistant',
         company: 'Fiader - Istanbul, Turkey · Part-time',
