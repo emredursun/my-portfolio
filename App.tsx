@@ -5,6 +5,7 @@ import MainContent from './components/MainContent.tsx';
 import Navbar from './components/Navbar.tsx';
 import ScrollToTopButton from './components/ScrollToTopButton.tsx';
 import CustomCursor from './components/CustomCursor.tsx';
+import PrintableResume from './components/PrintableResume.tsx';
 import { Page } from './types.ts';
 
 const App: React.FC = () => {
@@ -137,44 +138,50 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <main className={`relative bg-gray-100 dark:bg-[#121212] text-gray-800 dark:text-white font-sans transition-all duration-300 ${isMobileView ? 'min-h-screen p-4' : 'h-screen overflow-hidden p-8'}`}>
-      
-      {/* Custom Liquid Cursor (Desktop Only) */}
-      <CustomCursor />
+    <>
+      {/* Resume for Print - Visible only when printing */}
+      <PrintableResume />
 
-      {/* Ambient Aura Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-yellow-400/20 blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-overlay"></div>
-        <div className="absolute top-[20%] right-[-10%] w-[35%] h-[35%] rounded-full bg-blue-400/20 blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-overlay"></div>
-         <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-purple-400/20 blur-[120px] animate-blob animation-delay-4000 mix-blend-multiply dark:mix-blend-overlay"></div>
-      </div>
+      {/* Main Web App - Hidden when printing */}
+      <main className={`print:hidden relative bg-gray-100 dark:bg-[#121212] text-gray-800 dark:text-white font-sans transition-all duration-300 ${isMobileView ? 'min-h-screen p-4' : 'h-screen overflow-hidden p-8'}`}>
+        
+        {/* Custom Liquid Cursor (Desktop Only) */}
+        <CustomCursor />
 
-      {/* Reading Progress Bar */}
-      <div 
-        className={`fixed left-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 z-[100] transition-all duration-100 ease-out ${isMobileView ? 'top-0' : 'top-0'}`}
-        style={{ width: `${readingProgress}%` }}
-      ></div>
-
-      <div className={`relative z-10 max-w-7xl mx-auto flex gap-8 ${isMobileView ? 'flex-col' : 'flex-row h-full'}`}>
-        <Sidebar
-          theme={theme}
-          toggleTheme={toggleTheme}
-          activePage={activePage}
-          onNavigate={handleNavigation}
-          isMobileView={isMobileView}
-        />
-        <div ref={contentRef} className={`flex-1 scroll-smooth ${!isMobileView ? 'overflow-y-auto no-scrollbar' : ''}`}>
-          <MainContent activePage={activePage} isMobileView={isMobileView} />
+        {/* Ambient Aura Background */}
+        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-yellow-400/20 blur-[120px] animate-blob mix-blend-multiply dark:mix-blend-overlay"></div>
+          <div className="absolute top-[20%] right-[-10%] w-[35%] h-[35%] rounded-full bg-blue-400/20 blur-[120px] animate-blob animation-delay-2000 mix-blend-multiply dark:mix-blend-overlay"></div>
+           <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-purple-400/20 blur-[120px] animate-blob animation-delay-4000 mix-blend-multiply dark:mix-blend-overlay"></div>
         </div>
-      </div>
-      {isMobileView && (
-        <Navbar 
-          activePage={activePage}
-          onNavigate={handleNavigation}
-        />
-      )}
-      {isScrollButtonVisible && <ScrollToTopButton onClick={isMobileView ? scrollToWindowTop : scrollToContentTop} />}
-    </main>
+
+        {/* Reading Progress Bar */}
+        <div 
+          className={`fixed left-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 z-[100] transition-all duration-100 ease-out ${isMobileView ? 'top-0' : 'top-0'}`}
+          style={{ width: `${readingProgress}%` }}
+        ></div>
+
+        <div className={`relative z-10 max-w-7xl mx-auto flex gap-8 ${isMobileView ? 'flex-col' : 'flex-row h-full'}`}>
+          <Sidebar
+            theme={theme}
+            toggleTheme={toggleTheme}
+            activePage={activePage}
+            onNavigate={handleNavigation}
+            isMobileView={isMobileView}
+          />
+          <div ref={contentRef} className={`flex-1 scroll-smooth ${!isMobileView ? 'overflow-y-auto no-scrollbar' : ''}`}>
+            <MainContent activePage={activePage} isMobileView={isMobileView} />
+          </div>
+        </div>
+        {isMobileView && (
+          <Navbar 
+            activePage={activePage}
+            onNavigate={handleNavigation}
+          />
+        )}
+        {isScrollButtonVisible && <ScrollToTopButton onClick={isMobileView ? scrollToWindowTop : scrollToContentTop} />}
+      </main>
+    </>
   );
 };
 
