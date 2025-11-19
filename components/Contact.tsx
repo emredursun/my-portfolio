@@ -25,7 +25,6 @@ const Contact: React.FC = () => {
             // Simulate an API call that might fail
             await new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    // Simulate a 50% chance of failure
                     if (Math.random() > 0.5) {
                         resolve('Success!');
                     } else {
@@ -44,21 +43,25 @@ const Contact: React.FC = () => {
         switch (submissionStatus) {
             case 'success':
                 return (
-                    <div className="bg-gray-100 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg p-8 flex flex-col items-center justify-center text-center h-[436px]">
-                        <i className="fas fa-check-circle text-5xl text-green-500 mb-4 animate-icon-pop-in"></i>
-                        <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Thank You!</h4>
-                        <p className="text-gray-600 dark:text-gray-300">Your message has been sent successfully. I will get back to you soon.</p>
+                    <div className="bg-gray-50 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-2xl p-8 flex flex-col items-center justify-center text-center h-[436px] animate-fade-in">
+                        <div className="w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-6 animate-icon-pop-in">
+                            <i className="fas fa-check text-4xl text-green-500"></i>
+                        </div>
+                        <h4 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Thank You!</h4>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg">Your message has been sent successfully.<br/>I will get back to you soon.</p>
                     </div>
                 );
             case 'error':
                  return (
-                    <div className="bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-lg p-8 flex flex-col items-center justify-center text-center h-[436px]">
-                        <i className="fas fa-exclamation-triangle text-5xl text-red-500 mb-4"></i>
+                    <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800 rounded-2xl p-8 flex flex-col items-center justify-center text-center h-[436px] animate-fade-in">
+                        <div className="w-20 h-20 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mb-6">
+                            <i className="fas fa-exclamation-triangle text-4xl text-red-500"></i>
+                        </div>
                         <h4 className="text-2xl font-bold text-red-800 dark:text-red-300 mb-2">Submission Failed</h4>
-                        <p className="text-red-700 dark:text-red-400 mb-6">Something went wrong. Please try again.</p>
+                        <p className="text-red-600 dark:text-red-400 mb-8">Something went wrong. Please try again.</p>
                         <button
                             onClick={() => setSubmissionStatus('idle')}
-                            className="bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:bg-yellow-500 transition-all duration-300 hover:-translate-y-1"
+                            className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-xl flex items-center justify-center gap-2 hover:bg-yellow-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                         >
                             <i className="fas fa-redo"></i>
                             Try Again
@@ -70,36 +73,36 @@ const Contact: React.FC = () => {
             default:
                 return (
                     <form className="space-y-6" onSubmit={handleSubmit}>
-                        <div>
+                        <div className="group">
                             <input
                                 type="text"
                                 placeholder="Full Name"
-                                className="w-full bg-gray-100 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300 hover:border-yellow-400/50"
+                                className="w-full bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md focus:shadow-lg focus:scale-[1.01]"
                                 required
                                 disabled={submissionStatus === 'submitting'}
                             />
                         </div>
-                        <div>
+                        <div className="group">
                             <input
                                 type="email"
                                 placeholder="Email Address"
-                                className="w-full bg-gray-100 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300 hover:border-yellow-400/50"
+                                className="w-full bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md focus:shadow-lg focus:scale-[1.01]"
                                 required
                                 disabled={submissionStatus === 'submitting'}
                             />
                         </div>
-                        <div>
+                        <div className="group">
                             <textarea
                                 placeholder="Your Message"
                                 rows={5}
-                                className="w-full bg-gray-100 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300 hover:border-yellow-400/50"
+                                className="w-full bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md focus:shadow-lg focus:scale-[1.01] resize-none"
                                 required
                                 disabled={submissionStatus === 'submitting'}
                             ></textarea>
                         </div>
                         <button
                             type="submit"
-                            className="w-full bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:bg-yellow-500 transition-all duration-300 disabled:bg-yellow-300 disabled:cursor-not-allowed hover:-translate-y-1 disabled:transform-none"
+                            className="w-full bg-yellow-400 text-gray-900 font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2 hover:bg-yellow-500 transition-all duration-300 disabled:bg-yellow-300 disabled:cursor-not-allowed hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] hover:scale-[1.02] active:scale-[0.98]"
                             disabled={submissionStatus === 'submitting'}
                         >
                              {submissionStatus === 'submitting' ? (
@@ -124,12 +127,23 @@ const Contact: React.FC = () => {
             <PageTitle title="Contact" />
             <div className="flex flex-col xl:flex-row gap-12">
                 <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Form</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-yellow-400/10 flex items-center justify-center text-yellow-400">
+                            <i className="fas fa-envelope-open-text"></i>
+                        </div>
+                        Contact Form
+                    </h3>
                     {renderFormContent()}
                 </div>
                 <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Find Me Here</h3>
-                     <div className="h-[300px] rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-yellow-400/10 flex items-center justify-center text-yellow-400">
+                            <i className="fas fa-map-marked-alt"></i>
+                        </div>
+                        Find Me Here
+                    </h3>
+                     <div className="h-[300px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg group relative">
+                        <div className="absolute inset-0 border-4 border-transparent group-hover:border-yellow-400/30 transition-colors duration-300 pointer-events-none z-10 rounded-2xl"></div>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38740.16919139266!2d5.13280806443481!3d52.69614777894901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c61c3b531a3977%3A0x868b248a39151740!2sHoogkarspel!5e0!3m2!1sen!2snl!4v1721323330345!5m2!1sen!2snl"
                             width="100%"
@@ -139,10 +153,10 @@ const Contact: React.FC = () => {
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                             title="Location Map"
-                            className="dark:grayscale-[100%] dark:invert-[100%]"
+                            className="dark:grayscale-[100%] dark:invert-[100%] transition-transform duration-700 group-hover:scale-105"
                         ></iframe>
                     </div>
-                    <div className="mt-8">
+                    <div className="mt-12">
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Follow Me</h3>
                         <div className="flex gap-4">
                             {SOCIAL_LINKS.map(link => (
@@ -152,7 +166,7 @@ const Contact: React.FC = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={`Follow me on ${link.name}`}
-                                    className="w-12 h-12 bg-gray-100 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg flex items-center justify-center text-xl shadow-md text-gray-500 dark:text-gray-400 hover:text-yellow-400 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/50 hover:bg-yellow-400/10"
+                                    className="w-14 h-14 bg-gray-100 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-2xl flex items-center justify-center text-2xl shadow-md text-gray-500 dark:text-gray-400 hover:text-white hover:bg-yellow-400 dark:hover:bg-yellow-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-yellow-400/30 hover:rotate-[360deg]"
                                 >
                                     {link.icon}
                                 </a>
