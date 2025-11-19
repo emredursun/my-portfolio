@@ -164,16 +164,16 @@ const Projects: React.FC = () => {
         <section>
             <PageTitle title="Projects" />
             
-            <div className="mb-10 p-6 bg-gray-50 dark:bg-[#1e1e1e] rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <div className="mb-10 p-4 md:p-6 bg-gray-50 dark:bg-[#1e1e1e] rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Category Filter */}
-                    <div className="grid grid-cols-[max-content_1fr] items-center gap-4">
-                        <label htmlFor="category-btn" className="font-bold text-gray-700 dark:text-gray-300">Category:</label>
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="category-btn" className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-1">Category</label>
                         <div className="relative" ref={categoryDropdownRef}>
                             <button
                                 id="category-btn"
                                 onClick={() => setIsCategoryDropdownOpen(prev => !prev)}
-                                className={`w-full flex items-center justify-between px-4 py-3 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-xl text-sm font-medium transition-all duration-300 border border-transparent hover:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow-sm ${isCategoryDropdownOpen ? 'ring-2 ring-yellow-400 border-transparent' : ''}`}
+                                className={`w-full flex items-center justify-between px-4 py-3.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-xl text-sm font-medium transition-all duration-300 border border-transparent hover:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow-sm ${isCategoryDropdownOpen ? 'ring-2 ring-yellow-400 border-transparent' : ''}`}
                                 aria-haspopup="listbox"
                                 aria-expanded={isCategoryDropdownOpen}
                             >
@@ -215,13 +215,13 @@ const Projects: React.FC = () => {
                     </div>
                     
                     {/* Technology Filter */}
-                    <div className="grid grid-cols-[max-content_1fr] items-center gap-4">
-                        <label htmlFor="tech-btn" className="font-bold text-gray-700 dark:text-gray-300">Technology:</label>
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="tech-btn" className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 ml-1">Technology</label>
                         <div className="relative" ref={techDropdownRef}>
                             <button
                                 id="tech-btn"
                                 onClick={() => setIsTechDropdownOpen(prev => !prev)}
-                                className={`w-full flex items-center justify-between px-4 py-3 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-xl text-sm font-medium transition-all duration-300 border border-transparent hover:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow-sm ${isTechDropdownOpen ? 'ring-2 ring-yellow-400 border-transparent' : ''}`}
+                                className={`w-full flex items-center justify-between px-4 py-3.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-xl text-sm font-medium transition-all duration-300 border border-transparent hover:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow-sm ${isTechDropdownOpen ? 'ring-2 ring-yellow-400 border-transparent' : ''}`}
                                 aria-haspopup="listbox"
                                 aria-expanded={isTechDropdownOpen}
                             >
