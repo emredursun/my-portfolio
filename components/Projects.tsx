@@ -13,48 +13,94 @@ const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
     </div>
 ));
 
-const ProjectCard: React.FC<{ project: Project; onOpen: () => void; }> = ({ project, onOpen }) => (
-    <div
-        className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-400/20 hover:-translate-y-2 hover:border-yellow-400/50 cursor-pointer animate-fade-in-up flex flex-col h-full"
-        onClick={onOpen}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpen()}
-        role="button"
-        tabIndex={0}
-    >
-        <div className="relative overflow-hidden h-56">
-             <div className="absolute inset-0 bg-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"></div>
-            <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transform group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-out"
-                loading="lazy"
-                width="400"
-                height="300"
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-[2px]">
-                <div className="text-yellow-400 text-4xl p-4 bg-white/10 rounded-full backdrop-blur-md transform scale-50 group-hover:scale-100 transition-transform duration-300 shadow-xl border border-white/20">
-                    <i className="fas fa-plus"></i>
+const ProjectCard: React.FC<{ project: Project; onOpen: () => void; }> = ({ project, onOpen }) => {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [rotation, setRotation] = useState({ x: 0, y: 0 });
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return;
+
+        const rect = cardRef.current.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+
+        setRotation({ x: yPct * -10, y: xPct * 10 });
+    };
+
+    const handleMouseLeave = () => {
+        setRotation({ x: 0, y: 0 });
+        setIsHovering(false);
+    };
+
+    return (
+        <div className="perspective-1000 h-full">
+            <div
+                ref={cardRef}
+                className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 shadow-md transition-all duration-200 ease-out cursor-pointer animate-fade-in-up flex flex-col h-full"
+                onClick={onOpen}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpen()}
+                onMouseMove={handleMouseMove}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={handleMouseLeave}
+                role="button"
+                tabIndex={0}
+                style={{
+                    transform: isHovering ? `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale3d(1.02, 1.02, 1.02)` : 'rotateX(0) rotateY(0) scale3d(1, 1, 1)',
+                    transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out'
+                }}
+            >
+                <div className="relative overflow-hidden h-56 transform-style-3d">
+                    <div className="absolute inset-0 bg-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"></div>
+                    
+                    {/* Dynamic Glare Effect */}
+                    <div 
+                        className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none"
+                        style={{
+                            transform: `translate(${rotation.y * 2}%, ${rotation.x * 2}%)`
+                        }}
+                    ></div>
+
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transform group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-[2px]">
+                        <div className="text-yellow-400 text-4xl p-4 bg-white/10 rounded-full backdrop-blur-md transform scale-50 group-hover:scale-100 transition-transform duration-300 shadow-xl border border-white/20">
+                            <i className="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div className="p-6 flex-1 flex flex-col transform-style-3d">
+                    <p className="text-xs font-bold text-yellow-500 uppercase tracking-wider mb-2 transform translate-z-10">{project.category}</p>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-yellow-500 mb-2 transform translate-z-20">{project.title}</h3>
+                    <div className="mt-auto pt-4 flex flex-wrap gap-2 transform translate-z-10">
+                        {project.technologies.slice(0,3).map(tech => (
+                            <span key={tech} className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md">
+                                {tech}
+                            </span>
+                        ))}
+                        {project.technologies.length > 3 && (
+                            <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md">
+                                +{project.technologies.length - 3}
+                            </span>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
-        <div className="p-6 flex-1 flex flex-col">
-            <p className="text-xs font-bold text-yellow-500 uppercase tracking-wider mb-2">{project.category}</p>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-yellow-500 mb-2">{project.title}</h3>
-            <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                {project.technologies.slice(0,3).map(tech => (
-                    <span key={tech} className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md">
-                        {tech}
-                    </span>
-                ))}
-                {project.technologies.length > 3 && (
-                    <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md">
-                        +{project.technologies.length - 3}
-                    </span>
-                )}
-            </div>
-        </div>
-    </div>
-);
+    );
+}
 
 const Projects: React.FC = () => {
     const [activeCategories, setActiveCategories] = useState<string[]>([]);
@@ -154,7 +200,7 @@ const Projects: React.FC = () => {
                                         ))}
                                     </ul>
                                     {activeCategories.length > 0 && (
-                                         <div className="border-tQP border-gray-200 dark:border-gray-700 p-2 bg-gray-50 dark:bg-gray-800/50 rounded-b-xl">
+                                         <div className="border-t border-gray-200 dark:border-gray-700 p-2 bg-gray-50 dark:bg-gray-800/50 rounded-b-xl">
                                              <button
                                                  onClick={() => setActiveCategories([])}
                                                  className="w-full text-center px-3 py-2 text-sm text-red-500 hover:bg-red-500/10 rounded-lg font-bold transition-colors"

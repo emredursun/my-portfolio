@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { SOCIAL_LINKS } from '../constants.tsx';
 
 const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
@@ -13,6 +13,66 @@ const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
 
 type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
 
+const ConfettiCanvas: React.FC = () => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        canvas.width = canvas.parentElement?.clientWidth || 300;
+        canvas.height = canvas.parentElement?.clientHeight || 300;
+
+        const particles: { x: number; y: number; vx: number;vy: number; color: string; size: number }[] = [];
+        const colors = ['#FBBF24', '#EF4444', '#3B82F6', '#10B981', '#F472B6'];
+
+        for (let i = 0; i < 100; i++) {
+            particles.push({
+                x: canvas.width / 2,
+                y: canvas.height / 2,
+                vx: (Math.random() - 0.5) * 10,
+                vy: (Math.random() - 0.5) * 10,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                size: Math.random() * 5 + 2
+            });
+        }
+
+        let animationId: number;
+        const render = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.2; // Gravity
+                p.size *= 0.96; // Shrink
+
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Remove tiny particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                 if (particles[i].size < 0.5) particles.splice(i, 1);
+            }
+
+            if (particles.length > 0) {
+                animationId = requestAnimationFrame(render);
+            }
+        };
+        render();
+
+        return () => cancelAnimationFrame(animationId);
+    }, []);
+
+    return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-20" />;
+};
+
 const Contact: React.FC = () => {
     const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>('idle');
 
@@ -25,7 +85,7 @@ const Contact: React.FC = () => {
             // Simulate an API call that might fail
             await new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    if (Math.random() > 0.5) {
+                    if (Math.random() > 0.1) { // 90% success rate
                         resolve('Success!');
                     } else {
                         reject(new Error('Failed to send message.'));
@@ -43,12 +103,13 @@ const Contact: React.FC = () => {
         switch (submissionStatus) {
             case 'success':
                 return (
-                    <div className="bg-gray-50 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-2xl p-8 flex flex-col items-center justify-center text-center h-[436px] animate-fade-in">
-                        <div className="w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-6 animate-icon-pop-in">
+                    <div className="bg-gray-50 dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-2xl p-8 flex flex-col items-center justify-center text-center h-[436px] animate-fade-in relative overflow-hidden">
+                        <ConfettiCanvas />
+                        <div className="w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-6 animate-icon-pop-in z-10">
                             <i className="fas fa-check text-4xl text-green-500"></i>
                         </div>
-                        <h4 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Thank You!</h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg">Your message has been sent successfully.<br/>I will get back to you soon.</p>
+                        <h4 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 z-10">Thank You!</h4>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg z-10">Your message has been sent successfully.<br/>I will get back to you soon.</p>
                     </div>
                 );
             case 'error':

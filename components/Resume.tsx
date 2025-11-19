@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { TimelineItem, Skill, Language } from '../types.ts';
 import { EDUCATION, EXPERIENCE, SKILLS, TECH_STACK, LANGUAGES } from '../constants.tsx';
 
@@ -12,18 +12,72 @@ const PageTitle: React.FC<{ title: string }> = React.memo(({ title }) => (
     </div>
 ));
 
-const TimelineCard: React.FC<{ item: TimelineItem }> = React.memo(({ item }) => (
-    <li className="relative pl-10 pb-10 border-l-2 border-gray-200 dark:border-gray-700 animate-fade-in-up group">
-        <span className="absolute -left-[11px] top-6 w-5 h-5 bg-yellow-400 rounded-full border-4 border-white dark:border-[#2a2a2a] transition-all duration-500 group-hover:scale-150 group-hover:shadow-[0_0_15px_rgba(250,204,21,0.6)] z-10"></span>
-        
-        <div className="relative transition-all duration-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-2xl p-5 -ml-5 -mt-5 border border-transparent hover:border-gray-100 dark:hover:border-gray-700/50 hover:shadow-lg dark:hover:shadow-black/20 hover:translate-x-2 cursor-default">
-            <p className="text-xs font-bold text-yellow-500 uppercase tracking-wide mb-2">{item.date}</p>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-300 group-hover:text-yellow-500">{item.title}</h3>
-            <p className="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">{item.company}</p>
-            <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">{item.description}</p>
-        </div>
-    </li>
-));
+const TimelineCard: React.FC<{ item: TimelineItem }> = ({ item }) => {
+    const divRef = useRef<HTMLDivElement>(null);
+    const [isFocused, setIsFocused] = useState(false);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [opacity, setOpacity] = useState(0);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!divRef.current) return;
+
+        const div = divRef.current;
+        const rect = div.getBoundingClientRect();
+
+        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    };
+
+    const handleFocus = () => {
+        setIsFocused(true);
+        setOpacity(1);
+    };
+
+    const handleBlur = () => {
+        setIsFocused(false);
+        setOpacity(0);
+    };
+
+    const handleMouseEnter = () => {
+        setOpacity(1);
+    };
+
+    const handleMouseLeave = () => {
+        setOpacity(0);
+    };
+
+    return (
+        <li className="relative pl-10 pb-10 border-l-2 border-gray-200 dark:border-gray-700 animate-fade-in-up group/timeline">
+            <span className="absolute -left-[11px] top-6 w-5 h-5 bg-yellow-400 rounded-full border-4 border-white dark:border-[#2a2a2a] transition-all duration-500 group-hover/timeline:scale-150 group-hover/timeline:shadow-[0_0_15px_rgba(250,204,21,0.6)] z-10"></span>
+            
+            <div
+                ref={divRef}
+                onMouseMove={handleMouseMove}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="relative overflow-hidden rounded-2xl p-5 -ml-5 -mt-5 border border-transparent transition-all duration-300 cursor-default group-hover/timeline:border-gray-200 dark:group-hover/timeline:border-gray-700"
+            >
+                {/* Spotlight Gradient */}
+                <div
+                    className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+                    style={{
+                        opacity,
+                        background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(250, 204, 21, 0.1), transparent 40%)`,
+                    }}
+                />
+                
+                {/* Content */}
+                <div className="relative z-10">
+                    <p className="text-xs font-bold text-yellow-500 uppercase tracking-wide mb-2">{item.date}</p>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-300 group-hover/timeline:text-yellow-500">{item.title}</h3>
+                    <p className="text-md font-medium text-gray-700 dark:text-gray-300 mb-3">{item.company}</p>
+                    <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">{item.description}</p>
+                </div>
+            </div>
+        </li>
+    );
+};
 
 const SkillBar: React.FC<{ skill: Skill }> = React.memo(({ skill }) => (
     <div className="animate-fade-in-up group">
