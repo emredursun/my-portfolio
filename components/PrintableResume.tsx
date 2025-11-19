@@ -24,126 +24,129 @@ const PrintableResume: React.FC = () => {
         }
       `}</style>
       
-      {/* Container acts as the page with manual margins since @page margin is 0 */}
+      {/* Page container with padding */}
       <div className="p-[15mm] max-w-[210mm] mx-auto min-h-screen">
-          {/* Header */}
-          <header className="border-b-2 border-gray-800 pb-6 mb-8 flex justify-between items-end">
-            <div>
-                <h1 className="text-4xl font-bold uppercase tracking-tight mb-2 text-gray-900">{PERSONAL_INFO.name}</h1>
-                <h2 className="text-xl font-medium text-gray-600">{PERSONAL_INFO.title}</h2>
-            </div>
-            <div className="text-right text-sm text-gray-600 space-y-1">
-                <div className="flex items-center justify-end gap-2">
-                    {PERSONAL_INFO.email} <i className="fas fa-envelope text-gray-400"></i>
+          
+          {/* 1. Header - Centered & Clean */}
+          <header className="text-center border-b-2 border-gray-900 pb-6 mb-6">
+            <h1 className="text-4xl font-bold uppercase tracking-tight text-gray-900 mb-2">{PERSONAL_INFO.name}</h1>
+            <p className="text-xl font-medium text-gray-600 mb-3">{PERSONAL_INFO.title}</p>
+            
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-gray-600">
+                <div className="flex items-center gap-2">
+                    <i className="fas fa-envelope text-gray-400"></i> {PERSONAL_INFO.email}
                 </div>
-                <div className="flex items-center justify-end gap-2">
-                    {PERSONAL_INFO.phone} <i className="fas fa-phone text-gray-400"></i>
+                <div className="flex items-center gap-2">
+                    <i className="fas fa-phone text-gray-400"></i> {PERSONAL_INFO.phone}
                 </div>
-                <div className="flex items-center justify-end gap-2">
-                    {PERSONAL_INFO.location} <i className="fas fa-map-marker-alt text-gray-400"></i>
+                <div className="flex items-center gap-2">
+                    <i className="fas fa-map-marker-alt text-gray-400"></i> {PERSONAL_INFO.location}
+                </div>
+                {/* Optional: Link to portfolio if printed physically */}
+                <div className="flex items-center gap-2">
+                     <i className="fas fa-globe text-gray-400"></i> emredursun.nl
                 </div>
             </div>
           </header>
 
-          {/* Summary */}
-          <section className="mb-8">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-gray-200 mb-3 pb-1">Professional Summary</h3>
+          {/* 2. Summary - Full Width */}
+          <section className="mb-6">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 border-b border-gray-300 mb-3 pb-1">Professional Summary</h3>
             <p className="text-sm leading-relaxed text-gray-800 text-justify">{ABOUT_TEXT}</p>
           </section>
 
-          <div className="flex gap-8">
-              {/* Left Column: Experience & Education (Main Content) */}
-              <div className="flex-1">
-                  {/* Experience */}
-                  <section className="mb-8">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-gray-200 mb-4 pb-1">Professional Experience</h3>
-                    <div className="space-y-6">
-                        {EXPERIENCE.map((job, index) => (
-                            <div key={index}>
-                                <div className="flex justify-between items-baseline mb-1">
-                                    <h4 className="font-bold text-base text-gray-900">{job.title}</h4>
-                                    <span className="text-xs font-medium text-gray-500 whitespace-nowrap ml-4">{job.date}</span>
-                                </div>
-                                <div className="text-sm font-semibold text-gray-700 mb-2">{job.company}</div>
-                                <p className="text-xs text-gray-600 leading-relaxed text-justify">{job.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                  </section>
-
-                  {/* Education */}
-                  <section>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-gray-200 mb-4 pb-1">Education</h3>
-                    <div className="space-y-4">
-                        {EDUCATION.map((edu, index) => (
-                            <div key={index}>
-                                <div className="flex justify-between items-baseline mb-1">
-                                    <h4 className="font-bold text-sm text-gray-900">{edu.title}</h4>
-                                    <span className="text-xs font-medium text-gray-500 whitespace-nowrap ml-4">{edu.date}</span>
-                                </div>
-                                <div className="text-sm text-gray-700">{edu.company}</div>
-                                <p className="text-xs text-gray-500 mt-1">{edu.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                  </section>
-              </div>
-
-              {/* Right Column: Skills, Languages, Tech (Sidebar) */}
-              <div className="w-1/3 shrink-0">
-                  {/* Skills */}
-                  <section className="mb-8">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-gray-200 mb-4 pb-1">Core Skills</h3>
-                    <ul className="text-xs space-y-2">
-                        {SKILLS.map(skill => (
+          {/* 3. Skills & Tech Grid - 3 Columns at the Top */}
+          <section className="mb-8">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 border-b border-gray-300 mb-4 pb-1">Technical Expertise</h3>
+            <div className="grid grid-cols-3 gap-6">
+                
+                {/* Column 1: Core Skills */}
+                <div>
+                    <h4 className="text-xs font-bold text-gray-700 uppercase mb-2">Core Competencies</h4>
+                    <ul className="text-xs space-y-1.5">
+                        {SKILLS.slice(0, 8).map(skill => (
                             <li key={skill.name} className="flex justify-between items-center">
                                 <span className="font-medium text-gray-800">{skill.name}</span>
-                                <div className="w-12 h-1 bg-gray-200 rounded-full overflow-hidden print:bg-gray-200">
-                                    <div className="h-full bg-gray-400 print:bg-gray-500" style={{ width: `${skill.level}%` }}></div>
+                                {/* Minimalist bar */}
+                                <div className="w-16 h-1 bg-gray-200 rounded-full overflow-hidden print:bg-gray-200">
+                                    <div className="h-full bg-gray-600 print:bg-gray-600" style={{ width: `${skill.level}%` }}></div>
                                 </div>
                             </li>
                         ))}
                     </ul>
-                  </section>
+                </div>
 
-                  {/* Tech Stack */}
-                  <section className="mb-8">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-gray-200 mb-4 pb-1">Technical Stack</h3>
-                    <div className="space-y-4">
-                        {TECH_STACK.map((cat, idx) => (
-                            <div key={idx}>
-                                <h5 className="text-xs font-bold text-gray-700 mb-2">{cat.title}</h5>
-                                <div className="flex flex-wrap gap-1.5">
-                                    {cat.technologies.map(tech => (
-                                        <span key={tech.name} className="text-[10px] border border-gray-300 px-2 py-0.5 rounded text-gray-600 bg-gray-50 print:bg-gray-50 print:border-gray-300">
-                                            {tech.name}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
+                {/* Column 2: Tech Stack */}
+                <div>
+                    <h4 className="text-xs font-bold text-gray-700 uppercase mb-2">Technologies & Tools</h4>
+                    <div className="flex flex-wrap gap-1.5">
+                        {TECH_STACK.flatMap(cat => cat.technologies).map(tech => (
+                             <span key={tech.name} className="text-[10px] border border-gray-300 px-2 py-0.5 rounded text-gray-700 bg-gray-50 print:bg-gray-50 print:border-gray-300">
+                                {tech.name}
+                             </span>
                         ))}
                     </div>
-                  </section>
+                </div>
 
-                  {/* Languages */}
-                  <section>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 border-b border-gray-200 mb-4 pb-1">Languages</h3>
-                    <ul className="text-xs space-y-2">
+                {/* Column 3: Languages & Key Domains */}
+                <div>
+                    <h4 className="text-xs font-bold text-gray-700 uppercase mb-2">Languages</h4>
+                    <ul className="text-xs space-y-1 mb-4">
                         {LANGUAGES.map(lang => (
-                            <li key={lang.name} className="flex flex-col">
-                                <div className="flex justify-between">
-                                    <span className="font-medium text-gray-800">{lang.name}</span>
-                                    <span className="text-gray-500">{lang.level}</span>
-                                </div>
+                            <li key={lang.name} className="flex justify-between">
+                                <span className="font-medium text-gray-800">{lang.name}</span>
+                                <span className="text-gray-500">{lang.level}</span>
                             </li>
                         ))}
                     </ul>
-                  </section>
-              </div>
-          </div>
-          
+                     <h4 className="text-xs font-bold text-gray-700 uppercase mb-2">Key Domains</h4>
+                     <div className="flex flex-wrap gap-1.5">
+                        {['Test Automation', 'CI/CD Pipelines', 'API Testing', 'Agile/Scrum', 'Banking', 'E-commerce'].map(d => (
+                            <span key={d} className="text-[10px] font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded">
+                                {d}
+                            </span>
+                        ))}
+                     </div>
+                </div>
+            </div>
+          </section>
+
+          {/* 4. Experience - Full Width */}
+          <section className="mb-6">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 border-b border-gray-300 mb-4 pb-1">Professional Experience</h3>
+            <div className="space-y-5">
+                {EXPERIENCE.map((job, index) => (
+                    <div key={index} className="break-inside-avoid">
+                        <div className="flex justify-between items-baseline mb-1">
+                            <h4 className="font-bold text-base text-gray-900">{job.title}</h4>
+                            <span className="text-xs font-bold text-gray-600 whitespace-nowrap">{job.date}</span>
+                        </div>
+                        <div className="text-sm font-semibold text-gray-700 mb-2 italic">{job.company}</div>
+                        <p className="text-sm text-gray-700 leading-relaxed text-justify">{job.description}</p>
+                    </div>
+                ))}
+            </div>
+          </section>
+
+          {/* 5. Education - Full Width */}
+          <section className="mb-8">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 border-b border-gray-300 mb-4 pb-1">Education</h3>
+            <div className="space-y-4">
+                {EDUCATION.map((edu, index) => (
+                    <div key={index} className="break-inside-avoid">
+                        <div className="flex justify-between items-baseline mb-1">
+                            <h4 className="font-bold text-sm text-gray-900">{edu.title}</h4>
+                            <span className="text-xs font-bold text-gray-600 whitespace-nowrap">{edu.date}</span>
+                        </div>
+                        <div className="text-sm text-gray-700 italic">{edu.company}</div>
+                        <p className="text-xs text-gray-600 mt-1">{edu.description}</p>
+                    </div>
+                ))}
+            </div>
+          </section>
+
           {/* Footer */}
-          <footer className="mt-12 pt-6 border-t border-gray-200 text-center">
+          <footer className="mt-auto pt-6 border-t border-gray-200 text-center">
               <p className="text-xs text-gray-400">Generated from {PERSONAL_INFO.name}'s Portfolio • {new Date().getFullYear()}</p>
           </footer>
       </div>
