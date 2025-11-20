@@ -51,12 +51,18 @@ const TimelineCard: React.FC<{ item: TimelineItem }> = ({ item }) => {
             
             <div
                 ref={divRef}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        handleFocus();
+                    }
+                }}
                 onMouseMove={handleMouseMove}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className="relative overflow-hidden rounded-2xl p-5 -ml-5 -mt-5 border border-transparent transition-all duration-300 cursor-default group-hover/timeline:border-gray-200 dark:group-hover/timeline:border-gray-700"
+                className="relative overflow-hidden rounded-2xl p-5 -ml-5 -mt-5 border border-transparent transition-all duration-300 cursor-default group-hover/timeline:border-gray-200 dark:group-hover/timeline:border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             >
                 {/* Spotlight Gradient */}
                 <div

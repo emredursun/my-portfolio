@@ -138,6 +138,7 @@ const Contact: React.FC = () => {
                             <input
                                 type="text"
                                 placeholder="Full Name"
+                                aria-label="Full Name"
                                 className="w-full bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md focus:shadow-lg focus:scale-[1.01]"
                                 required
                                 disabled={submissionStatus === 'submitting'}
@@ -147,6 +148,7 @@ const Contact: React.FC = () => {
                             <input
                                 type="email"
                                 placeholder="Email Address"
+                                aria-label="Email Address"
                                 className="w-full bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md focus:shadow-lg focus:scale-[1.01]"
                                 required
                                 disabled={submissionStatus === 'submitting'}
@@ -155,6 +157,7 @@ const Contact: React.FC = () => {
                         <div className="group">
                             <textarea
                                 placeholder="Your Message"
+                                aria-label="Your Message"
                                 rows={5}
                                 className="w-full bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-300 hover:border-yellow-400 hover:shadow-md focus:shadow-lg focus:scale-[1.01] resize-none"
                                 required
@@ -206,7 +209,7 @@ const Contact: React.FC = () => {
                      <div className="h-[300px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg group relative">
                         <div className="absolute inset-0 border-4 border-transparent group-hover:border-yellow-400/30 transition-colors duration-300 pointer-events-none z-10 rounded-2xl"></div>
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38740.16919139266!2d5.13280806443481!3d52.69614777894901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c61c3b531a3977%3A0x868b248a39151740!2sHoogkarspel!5e0!3m2!1sen!2snl!4v1721323330345!5m2!1sen!2snl"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.478569172982!2d4.895167915801903!3d52.37021577978616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609c3c268bf43%3A0xb8f72815f8a474d0!2sAmsterdam%2C%20Netherlands!5e0!3m2!1sen!2sus!4v1625641234567!5m2!1sen!2sus"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}

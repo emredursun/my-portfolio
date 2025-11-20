@@ -48,6 +48,12 @@ const ScrambleText: React.FC<{ text: string; className?: string }> = ({ text, cl
         }, 30);
     };
 
+    useEffect(() => {
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+        };
+    }, []);
+
     return (
         <h1 
             onMouseEnter={handleMouseEnter}
