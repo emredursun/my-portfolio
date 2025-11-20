@@ -31,7 +31,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -79,23 +79,53 @@
         darkMode: 'class',
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              heading: ['Outfit', 'sans-serif'],
+              mono: ['Space Grotesk', 'monospace'],
+            },
+            colors: {
+              gold: {
+                400: '#FACC15',
+                500: '#EAB308',
+                600: '#CA8A04',
+              },
+              dark: {
+                bg: '#0a0a0a',
+                card: '#171717',
+                border: '#262626',
+              }
+            },
             animation: {
-              blob: "blob 7s infinite",
+              blob: "blob 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1)",
+              "fade-in": "fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+              "fade-in-up": "fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+              shimmer: "shimmer 2.5s linear infinite",
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
             },
             keyframes: {
               blob: {
-                "0%": {
-                  transform: "translate(0px, 0px) scale(1)",
-                },
-                "33%": {
-                  transform: "translate(30px, -50px) scale(1.1)",
-                },
-                "66%": {
-                  transform: "translate(-20px, 20px) scale(0.9)",
-                },
-                "100%": {
-                  transform: "translate(0px, 0px) scale(1)",
-                },
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(30px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              shimmer: {
+                "0%": { backgroundPosition: "-1000px 0" },
+                "100%": { backgroundPosition: "1000px 0" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
               },
             },
           },
@@ -107,63 +137,97 @@
     <!-- Add Babel Standalone for in-browser TSX/JSX transpilation -->
     <script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
     <style>
-      /* Enable smooth scrolling for all anchor links */
+      /* Premium Scrollbar */
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #d1d5db transparent;
+      }
+      html.dark {
+        scrollbar-color: #404040 transparent;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 4px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #404040;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background: #525252;
+      }
+
+      /* Selection Color */
+      ::selection {
+        background: rgba(250, 204, 21, 0.3); /* Yellow-400 with opacity */
+        color: inherit;
+      }
+
+      /* Smooth Scroll */
       html {
         scroll-behavior: smooth;
       }
-      /* Base styles to prevent theme flashing */
+
+      /* Base Theme */
       html:not(.dark) body {
-        background-color: #f3f4f6; /* Light theme background */
+        background-color: #f8fafc; /* Slate-50 */
+        color: #0f172a;
       }
       html.dark body {
-        background-color: #1a1a1a;
+        background-color: #0a0a0a; /* Neutral-950 */
+        color: #ededed;
+      }
+
+
+
+      /* Glassmorphism Utilities */
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      .dark .glass {
+        background: rgba(23, 23, 23, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      }
+      .dark .glass-card {
+        background: rgba(23, 23, 23, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Animations */
+      .animate-icon-pop-in {
+          animation: iconPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
       }
       @keyframes iconPopIn {
-        0% {
-            opacity: 0;
-            transform: scale(0.5);
-        }
-        80% {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        100% {
-            transform: scale(1);
-        }
+        0% { opacity: 0; transform: scale(0.5); }
+        100% { opacity: 1; transform: scale(1); }
       }
-      .animate-icon-pop-in {
-          animation: iconPopIn 0.5s ease-out forwards;
-      }
-
-      /* New Animations */
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      
+      .skill-bar-fill {
+        animation: progressFill 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
       @keyframes progressFill {
-        from {
-          width: 0%;
-        }
-      }
-
-      .animate-fade-in {
-        animation: fadeIn 0.5s ease-out forwards;
-      }
-      .animate-fade-in-up {
-        animation: fadeInUp 0.5s ease-out forwards;
-      }
-      .skill-bar-fill {
-        animation: progressFill 1.5s ease-out forwards;
+        from { width: 0%; }
       }
     </style>
   <script type="importmap">
@@ -177,6 +241,7 @@
 </script>
 </head>
   <body>
+
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
   </body>
